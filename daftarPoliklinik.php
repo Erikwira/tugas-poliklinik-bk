@@ -8,16 +8,12 @@
         header("location:loginUser.php");
     }
 ?>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Udinus Poliklinik</title>
+    <title>PolikliniKlik</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -26,15 +22,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
+    <style>
+        .content-wrapper{
+            background: #F5EFE6;
+        }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-
-        <!-- Navbar -->
-        <?php include ('components/navbar.php') ?>
-        <!-- /.navbar -->
-
         <!-- Main Sidebar Container -->
         <?php include ('components/sidebar.php') ?>
         <!-- Content Wrapper. Contains page content -->
@@ -48,8 +44,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Main Footer -->
     </div>
     <!-- ./wrapper -->
-
-    <!-- REQUIRED SCRIPTS -->
 
     <!-- jQuery -->
     <script src="assets/plugins/jquery/jquery.min.js"></script>

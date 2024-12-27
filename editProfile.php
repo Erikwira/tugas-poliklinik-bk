@@ -6,8 +6,10 @@
     if ($username == "") {
         header("location:login.php");
     }
+    // else if ($_SESSION['akses'] != "admin") {
+    //     echo '<script>alert("Anda tidak memiliki akses");window.location.href="login.php";</script>';
+    // }
 ?>
-
 <html lang="en">
 
 <head>
@@ -23,10 +25,10 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
     <style>
-        .content-wrapper {
-            height: 100vh;
-            overflow-y: auto;
+        .content-wrapper{
             background: #F5EFE6;
+            overflow-y: auto;
+            height: 100%;
         }
     </style>
 </head>
@@ -38,15 +40,10 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <?php include ('pages/dashboard/index3.php') ?>
+            <?php include ('pages/editProfile/index.php') ?>
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-        <!-- Main Footer -->
-    </div>
-    <!-- ./wrapper -->
-
-    <!-- REQUIRED SCRIPTS -->
 
     <!-- jQuery -->
     <script src="assets/plugins/jquery/jquery.min.js"></script>

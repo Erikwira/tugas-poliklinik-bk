@@ -1,20 +1,144 @@
-<!-- Content Header (Page header) -->
+<style>
+    :root {
+        --bg-1: #1A4D2E;
+        --bg-2: #4F6F52;
+        --color-text: #F5EFE6;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #F5EFE6;
+    }
+
+    .row .col-sm-6 h1{
+        color: var(--bg-1);
+        font-weight: 700;
+    }
+    
+    .card {
+        position: relative;
+        width: 100%;
+    }
+    
+    .card-header {
+        position: relative;
+        background: var(--bg-1);
+        padding: 15px;
+        width: 100%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-header .card-title{
+        position: absolute;
+        top: 35%;
+        color: var(--color-text);
+        font-size: 1.3rem;
+        font-weight: 500;
+    }
+    
+    .card-tools .btn {
+        background: var(--bg-2);
+        color: var(--color-text);
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 700;
+    }
+    
+    .card-tools .btn:hover {
+        background: var(--color-text);
+        color: var(--bg-2);
+    }
+
+    .edit-btn{
+        background: var(--bg-1);
+        color: var(--color-text);
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .edit-btn:hover{
+        background: var(--color-text);
+        color: var(--bg-1);
+    }
+
+    .card-body{
+        background: #fff;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        color: var(--color-text);
+    }
+
+    .table th, .table td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .table thead {
+        background: var(--bg-1);
+        color: var(--color-text);
+    }
+
+    .table tbody tr:hover {
+        background: var(--bg-2);
+        color: var(--color-text);
+    }
+
+    .table tbody tr td:last-child {
+        text-align: center;
+    }
+
+    .modal-content {
+        background: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .modal-content .modal-header .modal-title{
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--bg-1);
+    }
+    
+    .form-group label{
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--bg-1);
+    }
+
+    .form-group .form-control {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid var(--bg-1);
+    }
+
+    .form-control option{
+        color: var(--bg-1);
+        font-weight: 500;
+    }
+</style>
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
                 <h1 class="m-0">Jadwal Periksa</h1>
-            </div><!-- /.col -->
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="index.php?page=home">Home</a></li>
-                    <li class="breadcrumb-item active">Jadwal Periksa</li>
-                </ol>
-            </div><!-- /.col -->
-        </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
+            </div>
+        </div>
+    </div>
 </div>
-<!-- /.content-header -->
 <!-- Main content -->
 <div class="content">
     <div class="container-fluid">
@@ -25,11 +149,11 @@
                         <h3 class="card-title">Daftar Jadwal Periksa</h3>
 
                         <div class="card-tools">
-                            <button type="button" class="btn btn-sm btn-primary float-right mx-1 my-1"
+                            <button type="button" class="btn btn-sm float-right mx-1 my-1"
                                 data-toggle="modal" data-target="#addModal">
                                 Tambah Jadwal Periksa
                             </button>
-                            <button type="button" class="btn btn-sm btn-secondary float-right mx-1 my-1"
+                            <button type="button" class="btn btn-sm float-right mx-1 my-1"
                                 data-toggle="modal" data-target="#cekJadwal">
                                 Lihat Jadwal
                             </button>
@@ -52,7 +176,7 @@
                                                     <select class="form-control" id="hari" name="hari">
                                                         <?php
                                                             $hariArray = ['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
-                                                           foreach($hariArray as $hari){
+                                                            foreach($hariArray as $hari){
                                                         ?>
                                                         <option value="<?php echo $hari ?>">
                                                             <?php echo $hari ?></option>
@@ -107,14 +231,14 @@
                                                     </thead>
                                                     <tbody>
                                                         <?php
-                                                                        $nomor = 1;
-                                                                        require 'config/koneksi.php';
-                                                                        $ambilDataJadwal = "SELECT jadwal_periksa.id, jadwal_periksa.id_dokter, jadwal_periksa.hari, jadwal_periksa.jam_mulai, jadwal_periksa.jam_selesai, dokter.id AS idDokter, dokter.nama, dokter.alamat, dokter.no_hp, dokter.id_poli, poli.id AS idPoli, poli.nama_poli, poli.keterangan FROM jadwal_periksa INNER JOIN dokter ON jadwal_periksa.id_dokter = dokter.id INNER JOIN poli ON dokter.id_poli = poli.id WHERE id_poli = '$id_poli'";
+                                                            $nomor = 1;
+                                                            require 'config/koneksi.php';
+                                                            $ambilDataJadwal = "SELECT jadwal_periksa.id, jadwal_periksa.id_dokter, jadwal_periksa.hari, jadwal_periksa.jam_mulai, jadwal_periksa.jam_selesai, dokter.id AS idDokter, dokter.nama, dokter.alamat, dokter.no_hp, dokter.id_poli, poli.id AS idPoli, poli.nama_poli, poli.keterangan FROM jadwal_periksa INNER JOIN dokter ON jadwal_periksa.id_dokter = dokter.id INNER JOIN poli ON dokter.id_poli = poli.id WHERE id_poli = '$id_poli'";
 
-                                                                        $resultss = mysqli_query($mysqli, $ambilDataJadwal);
-                                                                        while ($a = mysqli_fetch_assoc($resultss)) {
-                                                                            # code...
-                                                                        ?>
+                                                            $resultss = mysqli_query($mysqli, $ambilDataJadwal);
+                                                            while ($a = mysqli_fetch_assoc($resultss)) {
+                                                                # code...
+                                                            ?>
                                                         <tr>
                                                             <td><?php echo $nomor++; ?></td>
                                                             <td><?php echo $a['nama'] ?></td>
@@ -175,11 +299,11 @@
                                             if (mysqli_num_rows($queryCekJadwal) > 0) {
                                             
                                         ?>
-                                        <button type='button' class='btn btn-sm btn-warning edit-btn'
+                                        <button type='button' class='btn btn-sm edit-btn'
                                             data-toggle="modal" data-target="#editModal<?php echo $data['id'] ?>"
                                             disabled>Edit</button>
                                         <?php } else { ?>
-                                        <button type='button' class='btn btn-sm btn-warning edit-btn'
+                                        <button type='button' class='btn btn-sm edit-btn'
                                             data-toggle="modal" data-target="#editModal<?php echo $data['id'] ?>"
                                             <?php echo $data['id_dokter'] == $id_dokter ? '' : 'disabled'?>>Edit</button>
                                         <!-- <button type='button' class='btn btn-sm btn-danger edit-btn' data-toggle="modal"
@@ -242,7 +366,7 @@
                                                             </select>
                                                         </div>
 
-                                                        <button type="submit" class="btn btn-success">Simpan</button>
+                                                        <button type="submit" class="btn edit-btn">Simpan</button>
                                                     </form>
                                                 </div>
                                             </div>

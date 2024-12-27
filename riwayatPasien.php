@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <?php
     session_start();
+    $id_dokter = $_SESSION['id'];
     $username = $_SESSION['username'];
+    $id_poli = $_SESSION['id_poli'];
 
     if ($username == "") {
         header("location:login.php");
     }
 ?>
-
 <html lang="en">
 
 <head>
@@ -23,9 +24,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
     <style>
-        .content-wrapper {
-            height: 100vh;
-            overflow-y: auto;
+        .content-wrapper{
             background: #F5EFE6;
         }
     </style>
@@ -38,15 +37,10 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <?php include ('pages/dashboard/index3.php') ?>
+            <?php include ('pages/riwayatPasien/index.php') ?>
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-        <!-- Main Footer -->
-    </div>
-    <!-- ./wrapper -->
-
-    <!-- REQUIRED SCRIPTS -->
 
     <!-- jQuery -->
     <script src="assets/plugins/jquery/jquery.min.js"></script>

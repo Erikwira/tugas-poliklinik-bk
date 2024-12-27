@@ -27,91 +27,145 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <style>
-        /* Style umum untuk teks putih */
-        .text-white {
-            font-weight: 500;
-            /* membuat teks sedikit lebih tebal */
+        :root{
+            --bg-1: #1A4D2E;
+            --bg-2: #4F6F52;
+            --color-text: #F5EFE6;
         }
 
-        /* Mengubah ukuran dan gaya font untuk judul dan konten yang berbeda */
-        h1.text-white {
-            font-size: 2.2rem;
-            /* ukuran font yang lebih besar */
-            font-family: 'Arial', sans-serif;
-            /* ganti dengan font pilihan Anda */
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
         }
 
-        h4.text-white {
-            font-size: 1.6rem;
-            font-family: 'Arial', sans-serif;
+        .banner-section {
+            font-family: 'Sora', sans-serif;
+            background-image: url('./assets/images/bg-dokter.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            color: var(--bg-1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        h5.text-white {
-            font-size: 1.3rem;
-            font-family: 'Arial', sans-serif;
+        .banner-section .section{
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* Gaya khusus untuk teks pada info-box */
-        .info-box-text {
-            font-size: 1rem;
-            /* menyesuaikan ukuran font */
-            margin-bottom: 5px;
-            /* memberikan sedikit ruang di bawah teks */
+        .section h1{
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--bg-1);
+            margin-bottom: 1rem;
         }
 
-        /* Gaya khusus untuk nomor pada info-box */
-        .info-box-number {
-            font-size: 1.2rem;
-            /* menyesuaikan ukuran font */
+        .section p{
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--bg-2);
+        }
+
+        .list-section {
+            background: var(--color-text);
+            padding: 2rem 0;
+        }
+
+        .list-container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .list-section h2 {
+            font-size: 2.5rem;
             font-weight: bold;
-            /* membuatnya tebal */
+            color: var(--bg-1);
+            margin-bottom: 2rem;
         }
+
+        .service-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .service-list li {
+            background-color: var(--bg-1);
+            color: var(--color-text);
+            border-radius: 10px;
+            padding: 2rem;
+            width: 280px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            list-style: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-list li:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-list li i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .service-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
     </style>
 </head>
 
 <body>
-    <!-- Content Header (Page header) -->
-    <div class="content-header py-5 bg-primary text-white">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-12">
-                    <h1 class="m-0 text-center">Selamat Datang <b>Dokter <?php echo $username ?></b></h1>
-                    <h4 class="m-0 text-center">Anda berada di <?php echo $nama_poli; ?></h4>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-
-    <!-- Main content -->
-<section class="content mt-5">
-    <div class="container-fluid">
-
-        <!-- Bagian baru untuk gambar dan running text -->
-        <div class="row mb-4">
-            <div class="col-12">
-                <div style="background-image: url('assets/images/gedung.jpg'); background-size: cover; height: 200px; position: relative;">
-                <marquee style="position: absolute; bottom: 0; background-color: rgba(0,0,0,0.5); color: white; width: 100%; padding: 10px;">
-                    Pakai Masker - Tetap Jaga Protokol Kesehatan!
-                </marquee>
-                </div>
-            </div>
+    <section class="banner-section">
+        <div class="section">
+            <h1 class="m-0 text-center">Selamat Datang Dokter <?php echo $username ?></h1>
+            <p class="m-0 text-center">Anda berada di <?php echo $nama_poli; ?></p>
         </div>
+    </section>
 
-        <!-- Info boxes (existing content) -->
-        <div class="row">
-            <!-- ... isi tetap sama ... -->
+    <section class="list-section">
+        <div class="list-container">
+            <h2>Kesehatan Pasien Adalah Prioritas Utama</h2>
+            <ul class="service-list">
+                <li>
+                    <i class="fas fa-calendar-check"></i>
+                    <p class="service-text">Anda dapat mengelola jadwal</p>
+                </li>
+                <li>
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <p class="service-text">Memberikan Perawatan Terbaik</p>
+                </li>
+                <li>
+                    <i class="fas fa-chart-line"></i>
+                    <p class="service-text">Fitur Untuk Meningkatkan Efisiensi Praktek Anda</p>
+                </li>
+                <li>
+                    <i class="fas fa-user-md"></i>
+                    <p class="service-text">Memberikan Pengalaman Terbaik Bagi Pasien</p>
+                </li>
+            </ul>
         </div>
-        <!-- /.row -->
-
-        <!-- Custom Content Here (existing content) -->
-        <div class="row">
-            <!-- ... isi tetap sama ... -->
-        </div>
-        <!-- /.row -->
-    </div><!-- /.container-fluid -->
-</section>
-<!-- /.content -->
+    </section>
 
     <!-- Link to Bootstrap JS and other necessary scripts-->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

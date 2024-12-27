@@ -6,14 +6,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST["id"];
     $nama = $_POST["nama"];
     $alamat = $_POST["alamat"];
-    $no_ktp = $_POST["no_ktp"];
     $no_hp = $_POST["no_hp"];
 
     // Query untuk melakukan update data obat
-    $query = "UPDATE pasien SET 
+    $query = "UPDATE dokter SET 
         nama = '$nama', 
-        alamat = '$alamat', 
-        no_ktp = '$no_ktp',
+        alamat = '$alamat',
         no_hp = '$no_hp'
         WHERE id = '$id'";
 
@@ -21,8 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (mysqli_query($mysqli, $query)) {
         // Jika berhasil, redirect kembali ke halaman index atau sesuaikan dengan kebutuhan Anda
         echo '<script>';
-        echo 'alert("Data Pasien berhasil diubah!");';
-        echo 'window.location.href = "../../index.php";';
+        echo 'alert("Data dokter berhasil diubah!");';
+        echo 'window.location.href = "../../dashboard_dokter.php";';
         echo '</script>';
         exit();
     } else {

@@ -1,16 +1,149 @@
+<style>
+    :root {
+        --bg-1: #1A4D2E;
+        --bg-2: #4F6F52;
+        --color-text: #F5EFE6;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #F5EFE6;
+    }
+
+    .row .col-sm-6 h1{
+        color: var(--bg-1);
+        font-weight: 700;
+    }
+    
+    .card {
+        position: relative;
+        width: 100%;
+    }
+    
+    .card-header {
+        position: relative;
+        background: var(--bg-1);
+        padding: 25px;
+        width: 100%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-header .card-title{
+        color: var(--color-text);
+        font-size: 1.3rem;
+        font-weight: 500;
+    }
+    
+    .card-tools .btn {
+        background: var(--bg-2);
+        color: var(--color-text);
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 700;
+    }
+    
+    .card-tools .btn:hover {
+        background: var(--color-text);
+        color: var(--bg-2);
+    }
+
+    .edit-btn{
+        background: var(--bg-1);
+        color: var(--color-text);
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .edit-btn:hover{
+        background: var(--color-text);
+        color: var(--bg-1);
+    }
+
+    .card-body{
+        background: #fff;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        color: var(--color-text);
+    }
+
+    .table thead tr{
+        background: var(--bg-1);
+        color: var(--color-text);
+    }
+
+    .table tbody tr{
+        background: #fff;
+        color: var(--bg-1);
+    }
+
+    .table tbody tr:hover {
+        background: var(--bg-2);
+        color: var(--color-text);
+    }
+
+    .modal-content {
+        background: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .modal-content .modal-header .modal-title{
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--bg-1);
+    }
+    
+    .form-group label{
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--bg-1);
+    }
+
+    .form-group .form-control {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid var(--bg-1);
+    }
+
+    .form-control option{
+        color: var(--bg-1);
+        font-weight: 500;
+    }
+
+    .modal-body .card-body table thead tr{
+        background: var(--bg-1);
+        color: var(--color-text);
+    }
+
+    .modal-body .card-body table tbody tr{
+        background: #fff;
+        color: var(--bg-1);
+    }
+    .modal-body .card-body table tbody tr:hover{
+        background: var(--bg-2);
+        color: var(--color-text);
+    }
+</style>
 <!-- Content Header (Page header) -->
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
                 <h1 class="m-0">Riwayat Pasien</h1>
-            </div><!-- /.col -->
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="index.php?page=home">Home</a></li>
-                    <li class="breadcrumb-item active">Riwayat Pasien</li>
-                </ol>
-            </div><!-- /.col -->
+            </div>
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
 </div>
@@ -28,7 +161,7 @@
 
 
                     <div class="card-body table-responsive p-0">
-                        <table class="table table-hover text-nowrap">
+                        <table class="table text-nowrap">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -58,7 +191,7 @@
                                     <td><?php echo $data['no_hp']; ?></td>
                                     <td><?php echo $data['no_rm']; ?></td>
                                     <td>
-                                        <button type='button' class='btn btn-sm btn-info edit-btn' data-toggle="modal"
+                                        <button type='button' class='btn btn-sm edit-btn' data-toggle="modal"
                                             data-target="#detailModal<?php echo $data['id'] ?>">Detail
                                             Riwayat Periksa</button>
 
@@ -75,7 +208,7 @@
                                                     </div>
                                                     <div class="modal-body">
                                                         <div class="card-body table-responsive p-0">
-                                                            <table class="table table-hover text-nowrap">
+                                                            <table class="table text-nowrap">
                                                                 <thead>
                                                                     <tr>
                                                                         <td>No</td>
@@ -123,7 +256,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer justify-content-end">
-                                                        <button type="button" class="btn btn-default"
+                                                        <button type="button" class="btn btn-default edit-btn"
                                                             data-dismiss="modal">Close</button>
                                                     </div>
                                                 </div>

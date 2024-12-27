@@ -1,24 +1,60 @@
+<style>
+    :root{
+        --bg-1: #1A4D2E;
+        --bg-2: #4F6F52;
+        --color-text: #F5EFE6;
+    }
+    .row .col-sm-6 h1{
+        color: var(--bg-1);
+        font-weight: 700;
+    }
+    .card .card-header, .btn{
+        background: var(--bg-2);
+    }
+    .card .card-header .card-title, .btn{
+        color: var(--color-text);
+        font-weight: 400;
+    }
+    .btn:hover{
+        background: var(--bg-1);
+        color: #fff;
+    }
+    label, th{
+        color: var(--bg-1);
+    }
+    .form-control{
+        border: 1px solid var(--bg-2);
+    }
+    .form-control:focus{
+        border: 1px solid var(--color-text);
+    }
+    tr{
+        color: var(--bg-1);
+        font-weight: 400;
+    }
+    option{
+        color: var(--bg-2);
+    }
+    .nama-poli{
+        background: var(--color-text);
+    }
+</style>
+
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
                 <h1>Daftar Poli</h1>
             </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Daftar Poli</li>
-                </ol>
-            </div>
         </div>
-    </div><!-- /.container-fluid -->
+    </div>
 </section>
 
 <!-- Main content -->
 <section class="content">
     <div class="row">
         <div class="col-md-4">
-            <div class="card card-primary">
+            <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Daftar Poli</h3>
                 </div>
@@ -32,29 +68,27 @@
                         <div class="form-group">
                             <label for="poli">Pilih Poli</label>
                             <select class="form-control" id="poli" name="poli" required>
-                            <option value="" disabled selected>Pilih Poli</option>
+                                <option value="" disabled selected>Pilih Poli</option>
                                 <?php
                                 require 'config/koneksi.php';
                                 $query = "SELECT * FROM poli";
                                 $result = mysqli_query($mysqli,$query);
                                 while ($dataPoli = mysqli_fetch_assoc($result)) {
-                            ?>
-                                <option value="<?php echo $dataPoli['id'] ?>">
+                                ?>
+                                    <option class="nama-poli" value="<?php echo $dataPoli['id'] ?>">
                                     <?php echo $dataPoli['nama_poli'] ?></option>
                                 <?php } ?>
                             </select>
                         </div>
                         <div class="form-group mb-3">
                             <label for="no_rm font-weight-bold">Pilih Jadwal</label>
-                            <select class="form-control" id="jadwal" name="jadwal" required>
-
-                            </select>
+                            <select class="form-control" id="jadwal" name="jadwal" required></select>
                         </div>
                         <div class="form-group mb-3">
                             <label for="keluhan">Keluhan</label>
                             <textarea class="form-control" rows="3" id="keluhan" name="keluhan" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-block btn-primary">
+                        <button type="submit" class="btn btn-block">
                             Daftar
                         </button>
                     </form>
@@ -64,7 +98,7 @@
             <!-- /.card -->
         </div>
         <div class="col-md-8">
-            <div class="card card-primary">
+            <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Riwayat Daftar Poli</h3>
                 </div>
@@ -83,7 +117,6 @@
                             </tr>
                         </thead>
                         <tbody>
-
                             <!-- TAMPILKAN DATA OBAT DI SINI -->
                             <?php
                             require 'config/koneksi.php';
@@ -104,7 +137,7 @@
                                 <td><?php echo $data['no_antrian'] ?></td>
                                 <td>
                                     <a href="detailDaftarPoli.php?id=<?php echo $data['idDaftarPoli'] ?>"
-                                        class='btn btn-sm btn-success edit-btn'>Detail</a>
+                                        class='btn btn-sm edit-btn'>Detail</a>
                                 </td>
                             </tr>
                             <?php } ?>

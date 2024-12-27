@@ -46,44 +46,64 @@ if ($result_pasien && $result_dokter && $result_poli && $result_obat) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <style>
-        /* Style umum untuk teks putih */
-        .text-white {
-            font-weight: 500;
-            /* membuat teks sedikit lebih tebal */
+        :root {
+            --bg-1: #1A4D2E;
+            --bg-2: #4F6F52;
+            --color-text: #F5EFE6;
         }
 
-        /* Mengubah ukuran dan gaya font untuk judul dan konten yang berbeda */
-        h1.text-white {
-            font-size: 2.2rem;
-            /* ukuran font yang lebih besar */
-            font-family: 'Arial', sans-serif;
-            /* ganti dengan font pilihan Anda */
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            width: 100%;
+            height: 100vh;
         }
 
-        h4.text-white {
-            font-size: 1.6rem;
-            font-family: 'Arial', sans-serif;
+        .row .col-sm-6 h1{
+            color: var(--bg-1);
+            font-weight: 700;
         }
 
-        h5.text-white {
-            font-size: 1.3rem;
-            font-family: 'Arial', sans-serif;
+        .small-box {
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            color: var(--color-text);
+            margin-bottom: 20px;
+            padding: 15px;
+            background: var(--bg-1);
         }
 
-        /* Gaya khusus untuk teks pada info-box */
-        .info-box-text {
-            font-size: 1rem;
-            /* menyesuaikan ukuran font */
-            margin-bottom: 5px;
-            /* memberikan sedikit ruang di bawah teks */
+        .small-box .inner {
+            text-align: center;
         }
 
-        /* Gaya khusus untuk nomor pada info-box */
-        .info-box-number {
+        .small-box .inner h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+        .small-box .inner p {
             font-size: 1.2rem;
-            /* menyesuaikan ukuran font */
-            font-weight: bold;
-            /* membuatnya tebal */
+            font-weight: 500;
+            margin: 5px 0 0 0;
+            color: var(--color-text);
+        }
+
+        .small-box .small-box-footer {
+            background: #fff;
+            color: var(--bg-1);
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+
+        .small-box .small-box-footer:hover {
+            background: var(--bg-2);
+            color: var(--color-text);
         }
     </style>
 </head>
@@ -95,13 +115,7 @@ if ($result_pasien && $result_dokter && $result_poli && $result_obat) {
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0">Dashboard</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="dashboard.php?page=home">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
-                    </ol>
-                </div><!-- /.col -->
+                </div>
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
@@ -113,7 +127,7 @@ if ($result_pasien && $result_dokter && $result_poli && $result_obat) {
             <div class="row">
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-info">
+                    <div class="small-box">
                         <div class="inner">
                             <h3><?php echo $jumlah_pasien; ?></h3>
 
@@ -129,7 +143,7 @@ if ($result_pasien && $result_dokter && $result_poli && $result_obat) {
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-success">
+                    <div class="small-box">
                         <div class="inner">
                             <h3><?php echo $jumlah_dokter; ?><sup style="font-size: 20px"></sup></h3>
 
@@ -145,7 +159,7 @@ if ($result_pasien && $result_dokter && $result_poli && $result_obat) {
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-warning">
+                    <div class="small-box">
                         <div class="inner">
                             <h3><?php echo $jumlah_poli; ?></h3>
 
@@ -161,7 +175,7 @@ if ($result_pasien && $result_dokter && $result_poli && $result_obat) {
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-danger">
+                    <div class="small-box">
                         <div class="inner">
                             <h3><?php echo $jumlah_obat; ?></h3>
 
